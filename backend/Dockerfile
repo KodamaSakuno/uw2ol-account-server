@@ -8,5 +8,5 @@ RUN dotnet publish "Backend.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 EXPOSE 5000
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "Backend.dll"]
